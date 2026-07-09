@@ -231,7 +231,7 @@ bun run dev                   # http://localhost:8080
 - CSV / PDF export of ledger and history
 - Push / email notifications on invite, expense, and settlement events
 - Group-level analytics and spend trends
-- OAuth social login
+- OAuth social login.
 
 ---
 
