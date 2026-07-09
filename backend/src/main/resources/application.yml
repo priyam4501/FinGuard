@@ -1,0 +1,51 @@
+spring:
+  application:
+    name: finguard-backend
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/finguard}
+    username: ${DB_USER:postgres}
+    password: ${DB_PASSWORD:ps4501}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+    properties:
+      hibernate:
+        jdbc.time_zone: UTC
+        format_sql: false
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+    locations: classpath:db/migration
+  jackson:
+    default-property-inclusion: non_null
+    serialization:
+      write-dates-as-timestamps: false
+
+server:
+  port: ${SERVER_PORT:8083}
+  error:
+    include-message: always
+    include-binding-errors: always
+
+app:
+  jwt:
+    secret: ${JWT_SECRET:4ouEmEnHRVXB6jpA2Hlkksfx5fDxblFqdMfYM3s6BJs}
+    expiry-minutes: ${JWT_EXPIRY_MINUTES:1440}
+    issuer: finguard
+  cors:
+    allowed-origins: ${APP_CORS_ORIGINS:http://localhost:8080,http://localhost:5173}
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    operations-sorter: method
+
+logging:
+  level:
+    root: INFO
+    com.ps.finguard: DEBUG
+    org.springframework.security: INFO
